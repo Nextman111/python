@@ -28,19 +28,20 @@ def fileWrite(n, f_name):
         with open(f_name, 'w') as data:
             data.write(n)
 
+
 # Чтение из файла
 def readFile(f_name):
     with open(f_name, 'r') as data:
         line = [line for line in data]
     return line
 
-file = '4_example.txt'
+f_name = '4_example.txt'
 k = int(input("Введит k "))
 polynom = get_polynomial(k)
 print('Сгенерировали выражение')
 print(polynom)
 print('Записываем в файл')
-fileWrite(polynom, file)
+fileWrite(polynom, f_name)
 
 print('Читаем из файла')
-print(readFile(file))
+print(readFile(f_name))
