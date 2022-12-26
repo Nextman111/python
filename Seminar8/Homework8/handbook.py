@@ -12,7 +12,7 @@ def view_all():
 
 
 def open_file(path):
-    match path[-3:]:
+    match path.split('.')[1]:
         case 'csv':
             return open_csv(path)
         case 'txt':
