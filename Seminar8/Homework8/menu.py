@@ -11,14 +11,14 @@ def run():
 
 def get_menu():
     return {
-                '1': ['Посмотреть справочник', hb.view_all],
-                '2': ['Добавить запись', hb.add_field],
-                '3': ['Найти', hb.finde_in],
-                '4': ['Удалить', hb.delete_line],
-                '5': ['Импортировать', hb.import_file],
-                '6': ['Экспортировать в txt', hb.save_txt],
-                '7': ['Выход', exit]
-            }
+        '1': ['Посмотреть справочник', hb.view_all],
+        '2': ['Добавить запись', hb.add_field],
+        '3': ['Найти', hb.finde_in],
+        '4': ['Удалить', hb.delete_line],
+        '5': ['Импортировать', hb.import_file],
+        '6': ['Экспортировать в txt', hb.save_txt],
+        '7': ['Выход', exit]
+    }
 
 
 def print_menu(menu):

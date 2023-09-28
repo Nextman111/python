@@ -48,7 +48,7 @@ def fraction_to_decimal(rtn):
 
 
 # Из дроби в консоль
-def output(rtn):
+def output(rtn) -> str:
     return f'{rtn[0]}/{rtn[1]}'
 
 

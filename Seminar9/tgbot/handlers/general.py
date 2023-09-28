@@ -1,30 +1,22 @@
-from aiogram import Router
-from aiogram.dispatcher.filters.text import Text
+from aiogram import types
+from aiogram.dispatcher import Dispatcher, FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
-# from keyboards.for_questions import get_yes_no_kb
-
-router = Router()  # [1]
 
 
-@router.message(commands=["start"])  # [2]
-async def cmd_start(message: Message):
+async def cmd_start(message: types.Message, state: FSMContext):
+    await state.finish()
     await message.answer(
-        "Вы довольны своей работой?",
-        reply_markup=get_yes_no_kb()
+        "Я умею считать рациональные и комплексные числа.\
+        \nдля начала используй команду /calc\nдля отмены команду /cancel",
+        reply_markup=types.ReplyKeyboardRemove()
     )
 
 
-@router.message(Text(text="да", text_ignore_case=True))
-async def answer_yes(message: Message):
-    await message.answer(
-        "Это здорово!",
-        reply_markup=ReplyKeyboardRemove()
-    )
+async def cmd_cancel(message: types.Message, state: FSMContext):
+    await state.finish()
+    await message.answer("Все отменено\n начните заново /calc", reply_markup=types.ReplyKeyboardRemove())
 
 
-@router.message(Text(text="нет", text_ignore_case=True))
-async def answer_no(message: Message):
-    await message.answer(
-        "Жаль...",
-        reply_markup=ReplyKeyboardRemove()
-    )
+def register_handlers(dp: Dispatcher):
+    dp.register_message_handler(cmd_start, commands=['start', 'help'], state='*')
+    dp.register_message_handler(cmd_cancel, commands='cancel', state='*')

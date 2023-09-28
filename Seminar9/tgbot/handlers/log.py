@@ -25,3 +25,7 @@ def log_write(f_name, n):
         with open(f_name, 'a') as data:
             data.write(n)
 
+
+def print_result(argument1, argument2, action, result):
+    res = f'{argument1} {action} {argument2} = {result}'
+    return res

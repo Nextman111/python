@@ -16,7 +16,7 @@ def tryParseToInt(i):
     return i
 
 
-def parseExpresson(expression):
+def parseExpresson(expression: str):
     exp = [tryParseToInt(i) for i in expression.split()]
     while len(exp) > 1:
         if '*' and '/' in exp:
